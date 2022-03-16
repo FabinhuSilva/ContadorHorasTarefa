@@ -7,62 +7,57 @@ package contadorhorastarefa.DAO;
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 
 
 public class BancoDeDados {
     
-private static Connection con;
-
-public void ConexaoBanco() {
-
-    System.out.println("Entrou aqui");
-    
     //Variaveis utilizadas para Conexão com o Banco de Dados
     String driver = "org.postgresql.Driver";
     String user   = "postgres";
     String senha  = "postgres";
-    String url    = "jdbc:postgresql://localhost:5432/BancoContadorHoras";
+    String url    = "jdbc:postgresql://127.0.0.1:5432/BancoContadorHoras";
+    public Connection conexao;
 
+public void ConexaoBanco() {
     try{
-        System.out.println("Entrou no TRY");
-        Connection con = DriverManager.getConnection(
-				"jdbc:postgresql://localhost:5432/BancoContadorHoras",
-				"postgres", "postgres");
+        System.setProperty("jdbc.driverClassName",driver);
+        //Abre uma conexão com o Banco de dados
+        conexao = DriverManager.getConnection(url,user,senha);
         
-        System.out.println("Conectou!");
-        
-        //Consultar Tabelas do Banco
-        PreparedStatement pstm = con.prepareStatement("SELECT tablename FROM pg_tables order by tablename");
-        
-        System.out.println("Passou do SELECT");
-        
-        ResultSet rs = pstm.executeQuery();
-                rs.close();
-		pstm.close();
-		con.close();
-        
-        // Ver para que Serve
-        while (rs.next()) {
-	    System.out.println("Nome tabela: " + rs.getString("tablename"));				
-	    }
     }
     catch (Exception ex)
     {
-        System.err.print(ex.getMessage());
+    /*Trabalhando com Logs
+    Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+    */
+    JOptionPane.showMessageDialog(null, "Erro na conexão efetuada!\n"+ex.getMessage());
     } 
-    System.out.println("Fim dos Carregamentos");
+}
+public void DesconectarBancoDados() {
+
+    try {
+            conexao.close(); // 
+        } catch (Exception ex) {
+            /* 
+            Trabalhando com LOGs
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+            */
+            JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão!\nERRO: " + ex.getMessage(), "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    
+    public Connection getConexao() {
+        return conexao;
+    }
+
+    public void setConexao(Connection conexao) {
+        this.conexao = conexao;
+    }
+
 }
 
-public static Connection getCon() {
-	return con;
-}
 
-public static void setCon(Connection con) {
-	BancoDeDados.con = con;
-}
-}
 
