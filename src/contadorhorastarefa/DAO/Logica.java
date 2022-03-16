@@ -5,14 +5,14 @@ package contadorhorastarefa.DAO;
  *
  * @author Fabinhu
  */
-public class Logica {
+public class Logica{
     
  public boolean ConsultarLogin (String login){
 // Manda como parametro para ele duas variaveis para ele procurar no banco de dados!
  
             boolean autenticado = false;
             String sql;
-            sql = "select login, senha from NOME_DA_SUA_TABELA where login = ? and senha = ?";
+            sql = "select nome from usuario where login = ";
             PreparedStatement ps;
  
             ps = conexao.prepareStatement(sql);
