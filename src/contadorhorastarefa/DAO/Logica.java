@@ -1,31 +1,34 @@
 
 package contadorhorastarefa.DAO;
 
-import java.sql.*;
+import java.sql.Statement;
+import java.sql.SQLException;
 
 public class Logica{
-    
- public boolean ConsultarLogin (){
-     
+        
+        //Variaveis
+        Statement statement;
+//        ResultSet resultset;
         boolean autenticado = false;
         String sqlConsulta; 
-        
-        contadorhorastarefa.DAO.BancoDeDados conectabanco = new contadorhorastarefa.DAO.BancoDeDados();
-        conectabanco.ConexaoBanco();
-        sqlConsulta  = "SELECT * FROM usuario WHERE nome = ?";
-        
-        System.out.println("passou a captura conectou no banco!");
-                
+    
+ public boolean ConsultarLogin (){
         //nao estquecer usar o import java.sql.*
+        //Conecantando ao Banco de Dados
+        contadorhorastarefa.DAO.BancoDeDados conectabanco = new contadorhorastarefa.DAO.BancoDeDados();
         
-        ResultSet rs;
-        PreparedStatement ps;
-        ps.ConexaoBanco.preapreStatemente(sqlConsulta);
-        ps.seString(1,nome);
-        
-        rs.ps.executeQuery();
-        
-     
+        try{
+            //Conecta no Banco
+            conectabanco.ConexaoBanco();
+            Statement stms = (Statement)conectabanco.conexao.createStatement();
+            sqlConsulta  = "SELECT nome FROM usuario";
+            stms.executeQuery(sqlConsulta);
+            statement.close();
+            
+        }catch(SQLException erro){
+            System.out.println(erro);
+        }
+        System.out.println("passou a captura conectou no banco!");
  }
      
 }

@@ -15,6 +15,9 @@ public class ContadorHorasTarefa {
                 TelaLogin.ExibeDataHoraLogin();
                 TelaLogin.TelaLoginPrincipal();
                 TelaLogin.ExibeDataHoraLogin();
+                
+        contadorhorastarefa.DAO.Logica Logica = new contadorhorastarefa.DAO.Logica();
+        Logica.ConsultarLogin();
 
        /*
         Teste de conexão com Banco de dados
