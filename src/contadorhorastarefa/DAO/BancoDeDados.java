@@ -5,8 +5,12 @@ package contadorhorastarefa.DAO;
  *
  * @author Fabinhu
  */
+import java.awt.List;
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
@@ -15,17 +19,33 @@ public class BancoDeDados {
     
     //Variaveis utilizadas para Conexão com o Banco de Dados
     String driver = "org.postgresql.Driver";
-    String user   = "postgres";
+    String usuario   = "postgres";
     String senha  = "postgres";
-    String url    = "jdbc:postgresql://127.0.0.1:5432/BancoContadorHoras";
-    public Connection conexao;
+    String url    = "jdbc:postgresql://localhost:5432/BancoContadorHoras";
+    Connection conexao;
 
-public void ConexaoBanco() {
+public Connection ConexaoBanco() {
     try{
+        Class.forName(driver);
+        conexao = DriverManager.getConnection(url,usuario,senha);
         System.setProperty("jdbc.driverClassName",driver);
-        //Abre uma conexão com o Banco de dados
-        conexao = DriverManager.getConnection(url,user,senha);
         
+        /*
+        //Abre uma conexão com o Banco de dados
+        PreparedStatement script = this.conexao.prepareStatement("SELECT * FROM usuario");
+        ResultSet retornoScript = script.executeQuery();
+        
+        ArrayList<contadorhorastarefa.DAO.Usuario> users = new ArrayList<contadorhorastarefa.DAO.Usuario>();
+        while(retornoScript.next()){
+            contadorhorastarefa.DAO.Usuario usuario = new contadorhorastarefa.DAO.Usuario();
+            usuario.setNome((retornoScript.getString("nome")));            //usuario.setMatricula((retornoScript.getString("matricula")));
+            users.add(usuario);
+            System.out.println(usuario);
+        }
+        retornoScript.close();
+        script.close();
+
+        */
     }
     catch (Exception ex)
     {
@@ -47,17 +67,4 @@ public void DesconectarBancoDados() {
             JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão!\nERRO: " + ex.getMessage(), "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
-    
-    public Connection getConexao() {
-        return conexao;
-    }
-
-    public void setConexao(Connection conexao) {
-        this.conexao = conexao;
-    }
-
 }
-
-
-

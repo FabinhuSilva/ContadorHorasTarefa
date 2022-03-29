@@ -11,20 +11,24 @@ public class ContadorHorasTarefa {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Teste de conexão com Banco de dados
+        //conecta.DesconectarBancoDados();
+        contadorhorastarefa.DAO.BancoDeDados conecta = new contadorhorastarefa.DAO.BancoDeDados();
         contadorhorastarefa.GUI.TelaLogin TelaLogin = new contadorhorastarefa.GUI.TelaLogin();
+        
+        
+                //conecta.ConexaoBanco();
+        //--------------------------------
                 TelaLogin.ExibeDataHoraLogin();
                 TelaLogin.TelaLoginPrincipal();
-                TelaLogin.ExibeDataHoraLogin();
                 
-        contadorhorastarefa.DAO.Logica Logica = new contadorhorastarefa.DAO.Logica();
-        Logica.ConsultarLogin();
+                
+        //contadorhorastarefa.DAO.Logica Logica = new contadorhorastarefa.DAO.Logica();
+        //Logica.ConsultarLogin();
 
-       /*
-        Teste de conexão com Banco de dados
-        contadorhorastarefa.DAO.BancoDeDados conecta = new contadorhorastarefa.DAO.BancoDeDados();
-        conecta.ConexaoBanco();
-        conecta.DesconectarBancoDados();
-        */
+    
+
+       
     }
     
 }

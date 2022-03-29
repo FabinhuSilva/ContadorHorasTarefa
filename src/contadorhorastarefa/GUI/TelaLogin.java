@@ -1,6 +1,7 @@
 
 package contadorhorastarefa.GUI;
 
+import contadorhorastarefa.DAO.Usuario;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,6 +45,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setText("Usuario");
 
         txtLoginUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtLoginUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginUsuarioActionPerformed(evt);
+            }
+        });
 
         btnLoginSair.setText("Sair");
         btnLoginSair.addActionListener(new java.awt.event.ActionListener() {
@@ -126,17 +132,27 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+     public String pessoa;
+         contadorhorastarefa.DAO.Logica logica = new contadorhorastarefa.DAO.Logica();
+         contadorhorastarefa.DAO.LogicaCadastroUsuario logicaCadUsuario = new contadorhorastarefa.DAO.LogicaCadastroUsuario();
+     
     private void btnLoginSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnLoginSairActionPerformed
 
     private void btnLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginLogarActionPerformed
-     String pessoa;
-        
         //pega o valor do nome no seu JTextField e jogo para sua classe pessoa o campo Nome
         pessoa = txtLoginUsuario.getText();  
         System.out.println(pessoa);
+       // logica.ConsultarLogin(pessoa);
+        logicaCadUsuario.encontrarItem(Usuario);
     }//GEN-LAST:event_btnLoginLogarActionPerformed
+
+    private void txtLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUsuarioActionPerformed
+
+        //contadorhorastarefa.DAO.Logica logica = new  contadorhorastarefa.DAO.Logica();
+        logica.ConsultarLogin(pessoa);
+    }//GEN-LAST:event_txtLoginUsuarioActionPerformed
     
     public void TelaLoginPrincipal(){
     //setSize(350, 250);
@@ -144,13 +160,14 @@ public class TelaLogin extends javax.swing.JFrame {
     setDefaultCloseOperation(TelaLogin.EXIT_ON_CLOSE);
     }
     
+    
     public void ExibeDataHoraLogin(){
         Timer timer;
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         
         timer = new Timer(1000,(ActionEvent e)->{
-            calendar.setTimeInMillis(calendar.getTimeInMillis()+1000);
+        calendar.setTimeInMillis(calendar.getTimeInMillis()+1000);
         lblLoginHora.setText(formatoHora.format(calendar.getTime()));
         });
         timer.start();
@@ -181,6 +198,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLoginData;
     private javax.swing.JLabel lblLoginHora;
-    private javax.swing.JTextField txtLoginUsuario;
+    public javax.swing.JTextField txtLoginUsuario;
     // End of variables declaration//GEN-END:variables
 }

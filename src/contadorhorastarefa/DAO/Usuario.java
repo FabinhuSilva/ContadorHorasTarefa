@@ -1,20 +1,41 @@
 
 package contadorhorastarefa.DAO;
 
-/**
- *
- * @author Fabinhu
- */
+
 public class Usuario {
 
-    int codigo;
+    /*public Usuario(int Matricula, String Nome, String DataAdmissao) {
+        this.Matricula = Matricula;
+        this.Nome = Nome;
+        this.DataAdmissao = DataAdmissao;
+    }*/
 
-    public int getCodigo() {
-        return codigo;
+    private int Matricula;
+    private String Nome,DataAdmissao,login;
+    private boolean situacao;
+
+    public boolean isSituacao() {
+        return situacao;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setSituacao(boolean situacao) {
+        this.situacao = situacao;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public int getMatricula() {
+        return Matricula;
+    }
+
+    public void setMatricula(int Matricula) {
+        this.Matricula = Matricula;
     }
 
     public String getNome() {
@@ -25,13 +46,12 @@ public class Usuario {
         this.Nome = Nome;
     }
 
-    public String getData_Admissao() {
-        return Data_Admissao;
+    public String getDataAdmissao() {
+        return DataAdmissao;
     }
 
-    public void setData_Admissao(String Data_Admissao) {
-        this.Data_Admissao = Data_Admissao;
+    public void setDataAdmissao(String Data_Admissao) {
+        this.DataAdmissao = DataAdmissao;
     }
-    String Nome,Data_Admissao;
     
 }
