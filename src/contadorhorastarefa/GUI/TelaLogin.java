@@ -15,8 +15,8 @@ import javax.swing.Timer;
 public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
-        
        initComponents();
+       ExibeDataHoraLogin(); 
     }
 
         @SuppressWarnings("unchecked")
@@ -133,11 +133,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
      public String pessoa;
-         contadorhorastarefa.DAO.Logica logica = new contadorhorastarefa.DAO.Logica();
-         contadorhorastarefa.DAO.LogicaCadastroUsuario logicaCadUsuario = new contadorhorastarefa.DAO.LogicaCadastroUsuario();
+         //contadorhorastarefa.DAO.Logica logica = new contadorhorastarefa.DAO.Logica();
+         //contadorhorastarefa.DAO.LogicaCadastroUsuario logicaCadUsuario = new contadorhorastarefa.DAO.LogicaCadastroUsuario();
      
     private void btnLoginSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginSairActionPerformed
-        System.exit(0);
+        //System.exit(0);
+        Runtime.getRuntime().exit(0);
     }//GEN-LAST:event_btnLoginSairActionPerformed
 
     private void btnLoginLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginLogarActionPerformed
@@ -150,6 +151,9 @@ public class TelaLogin extends javax.swing.JFrame {
        //Criar Ação de abrir a tela Principal do Aplicativo
        contadorhorastarefa.GUI.TelaPrincipal TelaPrincipal = new contadorhorastarefa.GUI.TelaPrincipal();
        TelaPrincipal.setVisible(true);
+       
+       //Encerrar tela de Login
+       TelaLogin.this.dispose();
     }//GEN-LAST:event_btnLoginLogarActionPerformed
 
     private void txtLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUsuarioActionPerformed

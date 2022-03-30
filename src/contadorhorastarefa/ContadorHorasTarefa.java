@@ -14,13 +14,12 @@ public class ContadorHorasTarefa {
         //Teste de conexão com Banco de dados
         //conecta.DesconectarBancoDados();
         //contadorhorastarefa.DAO.BancoDeDados conecta = new contadorhorastarefa.DAO.BancoDeDados();
-        contadorhorastarefa.GUI.TelaLogin TelaLogin = new contadorhorastarefa.GUI.TelaLogin();
         
         
                 //conecta.ConexaoBanco();
         //--------------------------------
-              //  TelaLogin.ExibeDataHoraLogin();
-                TelaLogin.TelaLoginPrincipal();
+        contadorhorastarefa.GUI.TelaLogin TelaLogin = new contadorhorastarefa.GUI.TelaLogin();
+        TelaLogin.TelaLoginPrincipal();
                 
                 
         //contadorhorastarefa.DAO.Logica Logica = new contadorhorastarefa.DAO.Logica();

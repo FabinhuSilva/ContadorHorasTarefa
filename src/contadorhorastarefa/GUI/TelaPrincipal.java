@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package contadorhorastarefa.GUI;
 
 /**
@@ -27,21 +23,68 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmConsultas = new javax.swing.JMenu();
+        jmCadastro = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jmSair = new javax.swing.JMenu();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Contador de Horas");
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setName("jfTelaPrincipal"); // NOI18N
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
+        getContentPane().setLayout(null);
+
+        jmConsultas.setText("Consultas");
+        jMenuBar1.add(jmConsultas);
+
+        jmCadastro.setText("Cadastro");
+
+        jMenuItem1.setText("Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmCadastro.add(jMenuItem1);
+
+        jMenuItem2.setText("Cargo");
+        jmCadastro.add(jMenuItem2);
+
+        jMenuItem3.setText("Setor");
+        jmCadastro.add(jMenuItem3);
+
+        jMenuBar1.add(jmCadastro);
+
+        jmSair.setText("Sair");
+        jmSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSairActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jmSair);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSairActionPerformed
+     //Runtime.getRuntime().exit(0);
+     System.exit(0);
+     
+    }//GEN-LAST:event_jmSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +122,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenu jmCadastro;
+    private javax.swing.JMenu jmConsultas;
+    private javax.swing.JMenu jmSair;
     // End of variables declaration//GEN-END:variables
 }

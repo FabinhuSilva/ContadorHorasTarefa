@@ -22,7 +22,7 @@ public class BancoDeDados {
     String usuario   = "postgres";
     String senha  = "postgres";
     String url    = "jdbc:postgresql://localhost:5432/BancoContadorHoras";
-    public Connection conexao = DriverManager.getConnection(url,usuario,senha);;
+    public Connection conexao;
 
 public Connection ConexaoBanco() {
     try{
