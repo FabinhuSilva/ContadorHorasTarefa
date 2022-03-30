@@ -22,7 +22,7 @@ public class BancoDeDados {
     String usuario   = "postgres";
     String senha  = "postgres";
     String url    = "jdbc:postgresql://localhost:5432/BancoContadorHoras";
-    Connection conexao;
+    public Connection conexao = DriverManager.getConnection(url,usuario,senha);;
 
 public Connection ConexaoBanco() {
     try{
@@ -30,7 +30,7 @@ public Connection ConexaoBanco() {
         conexao = DriverManager.getConnection(url,usuario,senha);
         System.setProperty("jdbc.driverClassName",driver);
         
-        /*
+       
         //Abre uma conexão com o Banco de dados
         PreparedStatement script = this.conexao.prepareStatement("SELECT * FROM usuario");
         ResultSet retornoScript = script.executeQuery();
@@ -45,7 +45,7 @@ public Connection ConexaoBanco() {
         retornoScript.close();
         script.close();
 
-        */
+      
     }
     catch (Exception ex)
     {
@@ -55,6 +55,7 @@ public Connection ConexaoBanco() {
     JOptionPane.showMessageDialog(null, "Erro na conexão efetuada!\n"+ex.getMessage());
     } 
 }
+
 public void DesconectarBancoDados() {
 
     try {

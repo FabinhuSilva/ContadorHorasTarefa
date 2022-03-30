@@ -16,12 +16,12 @@ public class Logica{
         ResultSet ResultadoScript;
     //    String sqlConsulta; **desuso
         
-        boolean autenticado = false;
+    
+ public Usuario ConsultarLogin (String nome){
+      boolean autenticado = false;
       contadorhorastarefa.DAO.BancoDeDados ConexaoBanco = new contadorhorastarefa.DAO.BancoDeDados();
       contadorhorastarefa.DAO.Usuario usuario = new contadorhorastarefa.DAO.Usuario();
       contadorhorastarefa.GUI.TelaLogin login = new contadorhorastarefa.GUI.TelaLogin();
-    
- public Usuario ConsultarLogin (String nome){
      try{
 
          nome = login.pessoa;

@@ -144,14 +144,18 @@ public class TelaLogin extends javax.swing.JFrame {
         //pega o valor do nome no seu JTextField e jogo para sua classe pessoa o campo Nome
         pessoa = txtLoginUsuario.getText();  
         System.out.println(pessoa);
-       // logica.ConsultarLogin(pessoa);
-        logicaCadUsuario.encontrarItem(Usuario);
+        
+       //Falta Criar Validação de Login/Usuario
+       
+       //Criar Ação de abrir a tela Principal do Aplicativo
+       contadorhorastarefa.GUI.TelaPrincipal TelaPrincipal = new contadorhorastarefa.GUI.TelaPrincipal();
+       TelaPrincipal.setVisible(true);
     }//GEN-LAST:event_btnLoginLogarActionPerformed
 
     private void txtLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUsuarioActionPerformed
 
-        //contadorhorastarefa.DAO.Logica logica = new  contadorhorastarefa.DAO.Logica();
-        logica.ConsultarLogin(pessoa);
+        
+        
     }//GEN-LAST:event_txtLoginUsuarioActionPerformed
     
     public void TelaLoginPrincipal(){
