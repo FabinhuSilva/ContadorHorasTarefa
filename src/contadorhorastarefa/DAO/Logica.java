@@ -43,6 +43,7 @@ public class Logica{
            }catch(SQLException ex){
          JOptionPane.showMessageDialog(null,ex);
      }
+            return null;
  }
      
 }
