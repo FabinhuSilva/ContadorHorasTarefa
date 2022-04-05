@@ -5,45 +5,51 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import org.postgresql.core.ConnectionFactory;
 
 public class Logica{
-        
-        /*
-    PreparedStatement Resposanvel pela consulta
-        */
-        PreparedStatement Script;
-        ResultSet ResultadoScript;
-    //    String sqlConsulta; **desuso
+
+    public Logica() {
+    
+    }
         
     
- public Usuario ConsultarLogin (String nome){
-      boolean autenticado = false;
-      contadorhorastarefa.DAO.BancoDeDados ConexaoBanco = new contadorhorastarefa.DAO.BancoDeDados();
-      contadorhorastarefa.DAO.Usuario usuario = new contadorhorastarefa.DAO.Usuario();
-      contadorhorastarefa.GUI.TelaLogin login = new contadorhorastarefa.GUI.TelaLogin();
-     try{
-
-         nome = login.pessoa;
-         String consulta = "SELECT * FROM usuario WHERE nome = ?";
+ public static void ConsultarLogin (){
+  
+     BancoDeDados conexaobd = new BancoDeDados();
+     conexaobd.ConexaoBanco();
+     
+     PreparedStatement script = null;
+     ResultSet resultadoScript = null;
+     
+     List<Usuario> usuarios = new ArrayList<>();
+     
+     try {
+         script = conexaobd.ConexaoBanco().prepareStatement("select * from usuario");
+         resultadoScript = script.executeQuery();
          
-         ConexaoBanco.ConexaoBanco();
-
-         //Validação de Acesso ao Banco
-         if (ConexaoBanco.ConexaoBanco() != null) {
-             JOptionPane.showMessageDialog(null,"Conectado com Sucesso!");
-         }else{
-             JOptionPane.showMessageDialog(null,"Problemas com conexao!\n Erro: "+conectarBanco.conexao);
+         while (resultadoScript.next()){
+             
+             Usuario usuario = new Usuario();
+             
+             usuario.setMatricula(resultadoScript.getInt("matricula"));
+             usuario.setNome(resultadoScript.getString("nome"));
+             usuario.setDataAdmissao(resultadoScript.getString("dataadmissao"));
+             usuario.setLogin(resultadoScript.getString("login"));
+             usuarios.add(usuario);
+             
+             //System.out.println(usuarios);
+             //System.out.println(usuarios.size());
+             
+            
          }
-
-         Statement Script = (Statement) ConexaoBanco.conexao.createStatement();
-         this.Script.executeQuery(consulta);
-         JOptionPane.showMessageDialog(null,consulta);
          
-           }catch(SQLException ex){
-         JOptionPane.showMessageDialog(null,ex);
+     } catch (Exception e) {
+         System.out.println(e);
      }
-            return null;
  }
      
 }

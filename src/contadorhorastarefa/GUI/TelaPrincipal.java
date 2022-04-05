@@ -31,6 +31,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmTelaPrincipalConsulta = new javax.swing.JMenu();
+        MenuUsuario = new javax.swing.JMenuItem();
+        MenuSetor = new javax.swing.JMenuItem();
+        MenuCargo = new javax.swing.JMenuItem();
         jmTelaPrincipalCadastro = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -48,6 +51,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jmTelaPrincipalConsulta.setText("Consultas");
+        jmTelaPrincipalConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmTelaPrincipalConsultaActionPerformed(evt);
+            }
+        });
+
+        MenuUsuario.setText("Usuario");
+        MenuUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuUsuarioActionPerformed(evt);
+            }
+        });
+        jmTelaPrincipalConsulta.add(MenuUsuario);
+
+        MenuSetor.setText("Setor");
+        jmTelaPrincipalConsulta.add(MenuSetor);
+
+        MenuCargo.setText("Cargo");
+        jmTelaPrincipalConsulta.add(MenuCargo);
+
         jMenuBar1.add(jmTelaPrincipalConsulta);
 
         jmTelaPrincipalCadastro.setText("Cadastros");
@@ -88,6 +111,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Runtime.getRuntime().exit(0);    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void MenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuarioActionPerformed
+         //Criar Ação de abrir a tela Principal do Aplicativo
+       contadorhorastarefa.GUI.CadastroUsuario CadUsuario = new contadorhorastarefa.GUI.CadastroUsuario();
+       CadUsuario.setVisible(true);
+       
+       //Encerrar tela de Login
+       TelaLogin.this.dispose();
+    }//GEN-LAST:event_MenuUsuarioActionPerformed
+
+    private void jmTelaPrincipalConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmTelaPrincipalConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmTelaPrincipalConsultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -124,6 +160,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuCargo;
+    private javax.swing.JMenuItem MenuSetor;
+    private javax.swing.JMenuItem MenuUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

@@ -1,7 +1,11 @@
 
 package contadorhorastarefa.GUI;
 
+import contadorhorastarefa.DAO.Logica;
 import contadorhorastarefa.DAO.Usuario;
+import contadorhorastarefa.GUI.TelaInicial;
+import java.awt.Desktop;
+import static java.awt.SystemColor.desktop;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -147,10 +151,18 @@ public class TelaLogin extends javax.swing.JFrame {
         System.out.println(pessoa);
         
        //Falta Criar Validação de Login/Usuario
+       Logica log = new Logica();
+       //log.ConsultarLogin();
        
        //Criar Ação de abrir a tela Principal do Aplicativo
        contadorhorastarefa.GUI.TelaPrincipal TelaPrincipal = new contadorhorastarefa.GUI.TelaPrincipal();
+       //TelaPrincipal.show();
+       TelaPrincipal.setSize(400,400);
        TelaPrincipal.setVisible(true);
+       
+     //  TelaPrincipal.setVisible(true);
+      
+       //TelaPrincipal.setVisible(true);
        
        //Encerrar tela de Login
        TelaLogin.this.dispose();
