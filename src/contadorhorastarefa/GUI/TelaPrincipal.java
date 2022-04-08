@@ -32,12 +32,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jmTelaPrincipalConsulta = new javax.swing.JMenu();
         MenuUsuario = new javax.swing.JMenuItem();
-        MenuSetor = new javax.swing.JMenuItem();
-        MenuCargo = new javax.swing.JMenuItem();
-        jmTelaPrincipalCadastro = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contador de Horas Tarefa");
@@ -50,7 +44,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jmTelaPrincipalConsulta.setText("Consultas");
+        jmTelaPrincipalConsulta.setText("Cadastro");
         jmTelaPrincipalConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmTelaPrincipalConsultaActionPerformed(evt);
@@ -65,26 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jmTelaPrincipalConsulta.add(MenuUsuario);
 
-        MenuSetor.setText("Setor");
-        jmTelaPrincipalConsulta.add(MenuSetor);
-
-        MenuCargo.setText("Cargo");
-        jmTelaPrincipalConsulta.add(MenuCargo);
-
         jMenuBar1.add(jmTelaPrincipalConsulta);
-
-        jmTelaPrincipalCadastro.setText("Cadastros");
-
-        jMenuItem1.setText("Cargo");
-        jmTelaPrincipalCadastro.add(jMenuItem1);
-
-        jMenuItem2.setText("Setor");
-        jmTelaPrincipalCadastro.add(jMenuItem2);
-
-        jMenuItem3.setText("Usuario");
-        jmTelaPrincipalCadastro.add(jMenuItem3);
-
-        jMenuBar1.add(jmTelaPrincipalCadastro);
 
         setJMenuBar(jMenuBar1);
 
@@ -111,18 +86,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Runtime.getRuntime().exit(0);    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void MenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuarioActionPerformed
-         //Criar Ação de abrir a tela Principal do Aplicativo
-       contadorhorastarefa.GUI.CadastroUsuario CadUsuario = new contadorhorastarefa.GUI.CadastroUsuario();
-       CadUsuario.setVisible(true);
-       
-       //Encerrar tela de Login
-       TelaLogin.this.dispose();
-    }//GEN-LAST:event_MenuUsuarioActionPerformed
-
     private void jmTelaPrincipalConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmTelaPrincipalConsultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmTelaPrincipalConsultaActionPerformed
+
+    private void MenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuarioActionPerformed
+        //Criar Ação de abrir a tela Principal do Aplicativo
+        contadorhorastarefa.GUI.CadastroUsuario CadUsuario = new contadorhorastarefa.GUI.CadastroUsuario();
+        CadUsuario.setVisible(true);
+
+        //Encerrar tela de Login
+        contadorhorastarefa.GUI.TelaLogin TelaLogin = new contadorhorastarefa.GUI.TelaLogin();
+        TelaLogin.dispose();
+    }//GEN-LAST:event_MenuUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,15 +136,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuCargo;
-    private javax.swing.JMenuItem MenuSetor;
     private javax.swing.JMenuItem MenuUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenu jmTelaPrincipalCadastro;
     private javax.swing.JMenu jmTelaPrincipalConsulta;
     // End of variables declaration//GEN-END:variables
 }

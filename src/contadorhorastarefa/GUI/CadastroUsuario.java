@@ -5,18 +5,26 @@
  */
 package contadorhorastarefa.GUI;
 
+import contadorhorastarefa.DAO.Usuario;
+import contadorhorastarefa.DAO.UsuarioTableModel;
+
 /**
- *
- * @author Fabinhu
+ https://www.youtube.com/watch?v=wK_rDHZkLdY&list=PLWd_VnthxxLfA37A4Lb7VJZjqPYpes96X&index=2
+ * Aula 02
+  @author Fabinhu
  */
 public class CadastroUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CadastroUsuario
-     */
+    UsuarioTableModel UsuarioTM = new UsuarioTableModel();
+    
     public CadastroUsuario() {
         initComponents();
+        //inciando o JTable e instanciando a classe onde colocamos os metodos abstratos
+        jtCadastroUsuario.setModel(UsuarioTM);
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +47,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnCadastrousuarioSair = new javax.swing.JButton();
         btnCadastrousuarioIncluir = new javax.swing.JButton();
-        btnCadastrousuarioSalvar = new javax.swing.JButton();
+        btnCadastrousuarioExcluir = new javax.swing.JButton();
         jcbStatus = new javax.swing.JCheckBox();
         btnCadastrousuarioEditar1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -64,7 +72,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cadastro de Usuario");
 
         jLabel1.setText("Usuario");
@@ -77,21 +85,36 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         btnCadastrousuarioSair.setText("Sair");
         btnCadastrousuarioSair.setPreferredSize(new java.awt.Dimension(63, 32));
+        btnCadastrousuarioSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrousuarioSairActionPerformed(evt);
+            }
+        });
 
         btnCadastrousuarioIncluir.setText("Incluir");
         btnCadastrousuarioIncluir.setPreferredSize(new java.awt.Dimension(63, 32));
-
-        btnCadastrousuarioSalvar.setText("Salvar");
-        btnCadastrousuarioSalvar.setPreferredSize(new java.awt.Dimension(63, 32));
-        btnCadastrousuarioSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrousuarioIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrousuarioSalvarActionPerformed(evt);
+                btnCadastrousuarioIncluirActionPerformed(evt);
+            }
+        });
+
+        btnCadastrousuarioExcluir.setText("Excluir");
+        btnCadastrousuarioExcluir.setPreferredSize(new java.awt.Dimension(63, 32));
+        btnCadastrousuarioExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrousuarioExcluirActionPerformed(evt);
             }
         });
 
         jcbStatus.setText("Excluido");
 
         btnCadastrousuarioEditar1.setText("Editar");
+        btnCadastrousuarioEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrousuarioEditar1ActionPerformed(evt);
+            }
+        });
 
         jtCadastroUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,7 +156,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCadastrousuarioSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                            .addComponent(btnCadastrousuarioExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                             .addComponent(btnCadastrousuarioIncluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrousuarioEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrousuarioSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -162,11 +185,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastrousuarioIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastrousuarioIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -176,7 +201,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(btnCadastrousuarioSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCadastrousuarioExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNonmeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,15 +217,47 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addGap(22, 22, 22)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrousuarioSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrousuarioSalvarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastrousuarioSalvarActionPerformed
+    private void btnCadastrousuarioExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrousuarioExcluirActionPerformed
+      
+        if(jtCadastroUsuario.getSelectedRow() != -1){
+            UsuarioTM.removerLinhas(jtCadastroUsuario.getSelectedRow());
+            
+        }
+        
+    }//GEN-LAST:event_btnCadastrousuarioExcluirActionPerformed
+
+    private void btnCadastrousuarioSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrousuarioSairActionPerformed
+        //Runtime.getRuntime().exit(0);
+        this.dispose();
+    }//GEN-LAST:event_btnCadastrousuarioSairActionPerformed
+
+    private void btnCadastrousuarioIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrousuarioIncluirActionPerformed
+        Usuario usuarioCadastro = new Usuario();
+        usuarioCadastro.setMatricula(Integer.parseInt(txtMatricula.getText()));
+        usuarioCadastro.setNome(txtNonmeUsuario.getText());
+        usuarioCadastro.setDataAdmissao(txtDataAdmissao.getText());
+        usuarioCadastro.setLogin(txtNomeLogin.getText());
+        
+        //instanciando tablemodel
+        UsuarioTM.adicionarLinhas(usuarioCadastro);    }//GEN-LAST:event_btnCadastrousuarioIncluirActionPerformed
+
+    private void btnCadastrousuarioEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrousuarioEditar1ActionPerformed
+
+            if(jtCadastroUsuario.getSelectedRow() != -1){
+            UsuarioTM.setValueAt(txtMatricula.getText(),jtCadastroUsuario.getSelectedRow(),0);
+            UsuarioTM.setValueAt(txtNonmeUsuario.getText(),jtCadastroUsuario.getSelectedRow(),1);
+            UsuarioTM.setValueAt(txtDataAdmissao.getText(),jtCadastroUsuario.getSelectedRow(),2);
+            UsuarioTM.setValueAt(txtNomeLogin.getText(),jtCadastroUsuario.getSelectedRow(),3);
+            
+        }
+        
+    }//GEN-LAST:event_btnCadastrousuarioEditar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,9 +296,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrousuarioEditar1;
+    private javax.swing.JButton btnCadastrousuarioExcluir;
     private javax.swing.JButton btnCadastrousuarioIncluir;
     private javax.swing.JButton btnCadastrousuarioSair;
-    private javax.swing.JButton btnCadastrousuarioSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
